@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
     id("org.springframework.boot") version "3.0.2"
@@ -21,6 +22,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    developmentOnly("org.springframework.boot:spring-boot-devtools:3.0.2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
@@ -34,3 +36,12 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+tasks.named<BootJar>("bootJar") {
+    archiveClassifier.set("boot")
+}
+
+tasks.named<Jar>("jar") {
+    archiveClassifier.set("")
+}
+
