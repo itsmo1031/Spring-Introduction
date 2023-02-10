@@ -3,8 +3,10 @@ package dev.itsmo.springintroduction.repository
 import dev.itsmo.springintroduction.domain.Member
 
 class MemoryMemberRepository : MemberRepository {
-    private val store = hashMapOf<Long, Member>()
-    private var sequence = 0L
+    companion object {
+        private val store = hashMapOf<Long, Member>()
+        private var sequence = 0L
+    }
 
     override fun save(member: Member): Member {
         member.id = ++sequence
