@@ -2,7 +2,9 @@ package dev.itsmo.springintroduction.service
 
 import dev.itsmo.springintroduction.domain.Member
 import dev.itsmo.springintroduction.repository.MemberRepository
+import org.springframework.transaction.annotation.Transactional
 
+@Transactional
 class MemberService(private val memberRepository: MemberRepository) {
     /*
      * 회원 가입
