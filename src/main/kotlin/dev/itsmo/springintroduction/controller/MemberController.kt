@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping
 
 @Controller
 class MemberController(@Autowired private val memberService: MemberService) {
+    init {
+        println(memberService::class)
+    }
 
     @GetMapping("/members/new")
     fun createForm(): String {
